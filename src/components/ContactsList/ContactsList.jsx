@@ -1,3 +1,5 @@
+import ContactItem from "./ContactItem";
+
 import ContactsListSteled from "./ContactsList.styled";
 
 const ContactsList = ({contacts}) => {    
@@ -5,12 +7,9 @@ const ContactsList = ({contacts}) => {
             <ContactsListSteled>
             <h2>Contacts</h2>
             <ul>
-                {contacts.map(({ id, name, number }) => (
-                    <li key={id}>
-                        <p>{name}: <span>{number}</span></p>
-                    </li>                   
-                )
-                )}     
+                {contacts.map(contact => (
+                    <ContactItem key={contact.id} contact={contact} />         
+                ))}     
             </ul>
             </ContactsListSteled>    
         )

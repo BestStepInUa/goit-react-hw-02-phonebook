@@ -41,7 +41,8 @@ export default class App extends Component {
     const visibleContacts = this.getVisibleContacts()
     
     return (
-    <AppContainer>
+      <AppContainer>
+        <h1>Phonebook</h1>
         <AddContactForm onFormSubmit={this.handleAddContactFormSubmit} />
         <ContactsFilter value={filter} onFilterChange={this.handleContactsFilter} />
         <ContactsList contacts={visibleContacts} />
