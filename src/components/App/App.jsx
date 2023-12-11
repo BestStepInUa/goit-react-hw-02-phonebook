@@ -20,6 +20,12 @@ export default class App extends Component {
   
   handleAddContactFormSubmit = ({ name, number }) => {
     const contact = { id: nanoid(), name, number }
+    const { contacts } = this.state
+    const isDublicated = contacts.find(contact => contact.name === name)
+    if (isDublicated) {
+      alert(`${name} is already in contacts.`)
+      return
+    }
     this.setState((prevState) => ({
       contacts: [...prevState.contacts, contact]
     }))
