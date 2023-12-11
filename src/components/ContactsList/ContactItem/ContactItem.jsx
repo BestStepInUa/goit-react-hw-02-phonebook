@@ -1,8 +1,11 @@
-const ContactItem = ({ contact: { name, number } }) => {
+import ContactItemStyled from "./ContactItem.styled"
+
+const ContactItem = ({ contact: { id, name, number }, deleteContact }) => {
     return (
-        <li>
+        <ContactItemStyled>
             <p>{name}: <span>{number}</span></p>
-        </li> )
+            <button onClick={() => deleteContact(id)}>Delete</button>
+        </ContactItemStyled> )
 }
 
 export default ContactItem

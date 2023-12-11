@@ -39,6 +39,12 @@ export default class App extends Component {
     const { contacts, filter } = this.state
     const normalizedFilter = filter.toLocaleLowerCase()
     return contacts.filter(({name}) => name.toLocaleLowerCase().includes(normalizedFilter))
+  }
+
+  deleteContact = (id) => {
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts.filter(contact => contact.id !== id)]      
+    }))
 
   }
 
@@ -51,7 +57,7 @@ export default class App extends Component {
         <h1>Phonebook</h1>
         <AddContactForm onFormSubmit={this.handleAddContactFormSubmit} />
         <ContactsFilter value={filter} onFilterChange={this.handleContactsFilter} />
-        <ContactsList contacts={visibleContacts} />
+        <ContactsList contacts={visibleContacts} deleteContact={this.deleteContact} />
     </AppContainer>
     )
   }
